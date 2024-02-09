@@ -43,7 +43,9 @@ class Modulator(Osc):
         self.min_value = min_value
         self.max_value = max_value
         self.balance = balance
-
+    def get_balance(self):
+        return self.balance
+    
     def set_balance(self, balance):
         ## la variable balance solo puede estar en el rango -1 u 1 
         ## -1 canal izquierdo maximo
@@ -54,7 +56,8 @@ class Modulator(Osc):
         data = super().next()
         modulated_data = self.min_value + (self.max_value - self.min_value) * (1 + self.balance) * data / 2
         ## aumentamos el sonido del canal izquierdo 
-        left_channel = modulated_data * (1 - np.abs(self.balance))
+        # left_channel = modulated_data * (1 - np.abs(self.balance))
+        left_channel = modulated_data * (1 - np.abs(self.balance * 0.1))
         right_channel = modulated_data * (1 + np.abs(self.balance))
         return np.vstack([left_channel, right_channel]).T.astype(np.float32)
 # %%
@@ -89,14 +92,15 @@ def testModulator():
                 modulator.set_frequency(max(20, modulator.get_frequency() - 10))
             elif c == 'F':
                 modulator.set_frequency(min(20000, modulator.get_frequency() + 10))
-            elif c == 'b':
-                balance = float(input("Nuevo balance (-1 a 1): "))
-                modulator.set_balance(balance)
+            elif c == '+':
+                modulator.set_balance(modulator.get_balance()+0.1)
+            elif c == '-':
+                modulator.set_balance(modulator.get_balance()-0.1)
             elif c in ['q', 'escape']:
                 end = True
 
-        stream.write(np.ascontiguousarray(bloque))
-        print(f"\rVol: {modulator.get_volume():.2f} Frec: {modulator.get_frequency():.2f} Balance: {modulator.balance:.2f} Bloque: {numBloque}", end='')
+        stream.write(bloque)
+        print(f"\rVol: {modulator.get_volume():.2f} Frec: {modulator.get_frequency():.2f} Balance: {modulator.get_balance():.2f} Bloque: {numBloque}", end='')
         numBloque += 1
 
     kb.set_normal_term()
