@@ -66,6 +66,7 @@ def testOsc():
             elif (c=='f') : osc.set_frequency(max(20,osc.get_frequency()-10))
             elif (c=='F') : osc.set_frequency(min(20000,osc.get_frequency()+10))
             elif c in ['q','escape']: end = True
+        print(bloque.shape)
         stream.write(bloque)
         print(f"\rVol: {osc.get_volume():.2f} bloque: {numBloque}",end='')
         #print(f"\rFrec: {osc.get_frequency():.2f} bloque: {numBloque}",end='')

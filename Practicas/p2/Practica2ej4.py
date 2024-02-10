@@ -31,9 +31,15 @@ class Osc:
         return self.volume
 
     def next(self):
-        data = self.volume*np.sin(2*np.pi*(np.arange(self.current_frame,self.current_frame+CHUNK))*self.frequency/SRATE)
-        self.current_frame += CHUNK # actualizamos ultimo generado
-        return np.float32(data)
+        left_data = self.volume * np.sin(2 * np.pi * (np.arange(self.current_frame, self.current_frame + CHUNK)) * self.frequency / SRATE)
+        right_data = self.volume * np.sin(2 * np.pi * (np.arange(self.current_frame, self.current_frame + CHUNK)) * self.frequency / SRATE)
+
+        stereo_data = np.empty((len(left_data), 2), dtype=np.float32)  # Crear un array vacío para almacenar datos estéreo
+        stereo_data[:, 0] = np.float32(left_data)  # Canal izquierdo
+        stereo_data[:, 1] = np.float32(right_data)  # Canal derecho
+
+        self.current_frame += CHUNK  # Actualizamos el último generado
+        return stereo_data
     
 
 # %%
@@ -54,12 +60,16 @@ class Modulator(Osc):
 
     def next(self):
         data = super().next()
-        modulated_data = self.min_value + (self.max_value - self.min_value) * (1 + self.balance) * data / 2
-        ## aumentamos el sonido del canal izquierdo 
-        # left_channel = modulated_data * (1 - np.abs(self.balance))
-        left_channel = modulated_data * (1 - np.abs(self.balance * 0.1))
-        right_channel = modulated_data * (1 + np.abs(self.balance))
-        return np.vstack([left_channel, right_channel]).T.astype(np.float32)
+        left, right = data[:,0], data[:,1]
+     
+        stereo_data = np.empty((len(left), 2), dtype=np.float32)  # Crear un array vacío para almacenar datos estéreo
+        stereo_data[:, 0]=np.float32(left);
+        stereo_data[:, 1]=np.float32(right);
+        if self.balance > 0:
+            stereo_data[:, 0] = np.float32(left * (1 - self.balance))  # Canal izquierdo     
+        else:
+            stereo_data[:, 1] = np.float32(right * (1+ self.balance))  # Canal derecho
+        return stereo_data
 # %%
 def testModulator():
     kb = kbhit.KBHit()
@@ -98,7 +108,8 @@ def testModulator():
                 modulator.set_balance(modulator.get_balance()-0.1)
             elif c in ['q', 'escape']:
                 end = True
-
+        
+        bloque = bloque.astype(np.float32)
         stream.write(bloque)
         print(f"\rVol: {modulator.get_volume():.2f} Frec: {modulator.get_frequency():.2f} Balance: {modulator.get_balance():.2f} Bloque: {numBloque}", end='')
         numBloque += 1
