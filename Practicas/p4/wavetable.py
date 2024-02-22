@@ -1,18 +1,22 @@
-#%%
-import numpy as np
+'''
+    wavetable real con clase python
+    para conseguir la continuidad en los chunks generados y no tener pops
+    llevamos un atributo "fase" que recorre la tabla de ondas y se actualiza 
+    en cada sample producido.
+    La siguiente vez se solicita un chunk, la fase está en el punto correcto
+    Si varia la frencia de un chunk al siguiente, se varia el "paso" (step) entre 
+    muestas de la wavetable, pero la fase está donde quedo -> enlazan dos senos de
+    distinta frecuencia
+'''
+
+import numpy as np         # arrays    
 import sounddevice as sd   # modulo de conexión con portAudio
 import soundfile as sf     # para lectura/escritura de wavs
-from tkinter import *
-from tkinter import ttk
-
-
-
-WIDTH = 600 # ancho y alto de la ventana de PyGame
-HEIGHT = 600
 
 SRATE = 44100      
 CHUNK = 64
- 
+
+
 class OscWaveTable:
     def __init__(self, frec, vol, size):
         self.frec = frec
@@ -50,38 +54,3 @@ class OscWaveTable:
             cont = cont+1
     
         return np.float32(self.vol*samples)
-
-def motion(event):
-    global waveTable,stream,vol,frec, WIDTH, HEIGHT
-    newFrec = event.x / WIDTH * (1000 - 100) + 100
-    newVol = event.y / HEIGHT
-    if (newFrec != frec):
-        waveTable.setFrec( newFrec)
-        frec = newFrec
-    if (newVol != vol):
-        waveTable.setVol( newVol)
-        vol = newVol
-    samples = waveTable.getChunk()
-    stream.write(np.float32(0.5 * samples))
-    
-
-def main():
-    global waveTable,stream,vol,frec
-    frec = 800
-    vol = 1.0
-    stream = sd.OutputStream(samplerate=SRATE, blocksize=CHUNK, channels=1)
-    stream.start()
-    waveTable = OscWaveTable(frec, vol, SRATE)
-    root = Tk()
-    root.geometry("600x600")  # Establecer el tamaño de la ventana
-    root.bind('<Motion>', motion)
-
-    frm = ttk.Frame(root, padding=10)
-    frm.grid()
-    root.mainloop()
-    stream = sd.OutputStream(samplerate=SRATE,blocksize=CHUNK,channels=1)  
-    stream.start()
-    print('{}, {}'.format(x, y))
-    
-main()
-
