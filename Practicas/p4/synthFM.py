@@ -16,7 +16,7 @@ class SynthFM:
         self.fm = self.ratio*self.fc # fm en función de fc y ratio
         self.beta = beta
         
-        self.signal = OscFM(self.fc,amp=self.amp,fm=self.fm,beta=self.beta,carrier_waveform,modulator_waveform) # generador
+        self.signal = OscFM(self.fc,amp=self.amp,fm=self.fm,beta=self.beta,carrier_waveform= carrier_waveform,modulator_waveform=modulator_waveform) # generador
         self.adsr = ADSR(attack,decay,sustain,release)  # envolvente adsr
 
         # se dispara automáticamente

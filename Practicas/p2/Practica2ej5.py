@@ -1,4 +1,6 @@
-
+# %%
+## Laura Gomez Bodego
+## Miriam Martin Sanchez
 import numpy as np
 
 import sounddevice as sd

@@ -31,6 +31,4 @@ def test():
     os.system('xset r on')
     stream.close()
 
-test()    
-
-
+test()
