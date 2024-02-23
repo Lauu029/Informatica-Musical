@@ -6,6 +6,7 @@ from tkinter import *
 from slider import *
 from adsr import *
 from synthFM import *
+from tkinter import ttk
 
 class Instrument:
     def __init__(self,tk,name="FM synthetizer",amp=0.2,ratio=3,beta=0.6): 

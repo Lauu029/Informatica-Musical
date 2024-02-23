@@ -19,7 +19,7 @@ def test():
     ins = Instrument(tk)
     inputs = [ins]
     
-
+    
     # desactivar repeticion de teclas
     os.system('xset r off')
 
@@ -32,3 +32,7 @@ def test():
     stream.close()
 
 test()
+
+
+
+# %%

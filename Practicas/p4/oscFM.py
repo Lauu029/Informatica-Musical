@@ -1,7 +1,7 @@
 
 import numpy as np 
 
-import osc
+from osc import *
 import matplotlib.pyplot as plt
 from consts import *
 
@@ -25,21 +25,21 @@ class OscFM:
         # soporte para el chunk de salida
         sample = np.arange(self.frame,self.frame+CHUNK)        
         # aplicamos formula
-    
-        if self.carrier_waveform == 'sin':
-            out= self.amp * np.sin(2 * np.pi * self.fc * sample / SRATE +mod)
-        elif self.carrier_waveform == 'square':
-             out = self.amp * np.sign(np.sin(2 * np.pi * self.fc * sample / SRATE+mod))
-        elif self.carrier_waveform == 'triangle':
-             out = self.amp * np.arcsin(np.sin(2 * np.pi * self.fc * sample / SRATE+mod)) * (2 / np.pi)
-        elif self.carrier_waveform == 'sawtooth':
-             out = self.amp * (2 / np.pi) * np.arctan(1 / np.tan(np.pi * self.fc * sample / SRATE+mod))
         self.frame += CHUNK
-        return out 
+        
+        if self.carrier_waveform == 'sin':
+            return self.amp * np.sin(2 * np.pi * self.fc * sample / SRATE +mod)
+        elif self.carrier_waveform == 'square':
+             return self.amp * np.sign(np.sin(2 * np.pi * self.fc * sample / SRATE+mod))
+        elif self.carrier_waveform == 'triangle':
+             return self.amp * np.arcsin(np.sin(2 * np.pi * self.fc * sample / SRATE+mod)) * (2 / np.pi)
+        elif self.carrier_waveform == 'sawtooth':
+             return self.amp * (2 / np.pi) * np.arctan(1 / np.tan(np.pi * self.fc * sample / SRATE+mod))
         
        
     def changeOnda(self, o):
         self.carrier_waveform = o
+        
 
     def changeOndaMod(self, oMod):
         self.modulator_waveform = oMod
