@@ -6,7 +6,6 @@ from tkinter import *
 from slider import *
 from adsr import *
 from synthFM import *
-from tkinter import ttk
 
 class Instrument:
     def __init__(self,tk,name="FM synthetizer",amp=0.2,ratio=3,beta=0.6): 
@@ -48,18 +47,7 @@ class Instrument:
         self.releaseS = Slider(frameADSR,'release',
                    ini=0.5,from_=0.0,to=4.0,step=0.05,orient=HORIZONTAL,packSide=TOP) 
 
-        self.combo = ttk.Combobox(
-            state="readonly",
-            values=["sin", "triangle", "square", "sawtooth"]
-            )
-        self.combo.place(x=10, y=350)
-        self.combo.pack(side=LEFT, padx=10, pady=10)
-        self.combo1 = ttk.Combobox(
-        state="readonly",
-        values=["sin", "triangle", "square", "sawtooth"]
-        )
-        self.combo1.place(x=170, y=350)
-        self.combo1.pack(side=LEFT, padx=10, pady=10)
+
         
         # canales indexados por la nota de lanzamiento -> solo una nota del mismo valor
         self.channels = dict()        
@@ -69,7 +57,7 @@ class Instrument:
     def getConfig(self):
         return (self.ampS.get(),self.ratioS.get(),self.betaS.get(),
                 self.attackS.get(), self.decayS.get(), self.sustainS.get(),
-                self.releaseS.get(),self.combo.get(),self.combo1.get())
+                self.releaseS.get())
 
     # activación de nota
     def noteOn(self,midiNote):
@@ -86,7 +74,7 @@ class Instrument:
                     fc=freq,
                     amp=self.ampS.get(), ratio=self.ratioS.get(), beta=self.betaS.get(),
                     attack = self.attackS.get(), decay= self.decayS.get(),
-                    sustain=self.sustainS.get(), release=self.sustainS.get(),carrier_waveform=self.combo.get(),modulator_waveform=self.combo1.get())
+                    sustain=self.sustainS.get(), release=self.sustainS.get())
 
     # apagar nota -> propagamos noteOff al synth, que se encargará de hacer el release
     def noteOff(self,midiNote):
