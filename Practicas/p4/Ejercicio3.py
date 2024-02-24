@@ -15,53 +15,47 @@ CHUNK = 64
  
 class OscWaveTable:
     def __init__(self, frec, vol, size):
-        self.frec = frec
-        self.vol = vol
-        self.size = size
-        # un ciclo completo de seno en [0,2pi)
-        t = np.linspace(0, 1, num=size)
-        self.waveTable = np.sin(2 * np.pi * t)
-        # arranca en 0
+        self.volume = vol
+        self.fequency = frec
+        self.rate = size
+        c = np.linspace(0, 1, num=size)
+        self.wavetable = np.sin(2 * np.pi * c)
         self.fase = 0
-        # paso en la wavetable en funcion de frec y RATE
-        self.step = self.size/(SRATE/self.frec)
+        self.step = self.rate/(SRATE/self.fequency)
 
-    def setFrec(self,frec): 
-        self.frec = frec
-        self.step = self.size/(SRATE/self.frec)
+    def setFrequency(self,frec): 
+        self.fequency = frec
+        self.step = self.rate/(SRATE/self.fequency)
 
-    def getFrec(self): 
-        return self.frec    
+    def getFrequency(self): 
+        return self.fequency    
 
     def setVol(self,vol): 
-        self.vol = vol
+        self.volume = vol
 
-    def getChunk(self):
-        samples = np.zeros(CHUNK,dtype=np.float32)
-        cont = 0 
-        while cont < CHUNK:
-            self.fase = (self.fase + self.step) % self.size
-                                   
-            x0 = int(self.fase) % self.size
-            x1 = (x0 + 1) % self.size
-            y0, y1 = self.waveTable[x0], self.waveTable[x1]            
-            samples[cont] = y0 + (self.fase-x0)*(y1-y0)/(x1-x0)
-
-            cont = cont+1
-    
-        return np.float32(self.vol*samples)
+    def next(self):
+        samples = np.zeros(CHUNK, dtype=np.float32)
+        indices = (np.arange(CHUNK) * self.step + self.fase) % self.rate
+        x0 = indices.astype(int) % self.rate
+        x1 = (x0 + 1) % self.rate
+        y0, y1 = self.wavetable[x0], self.wavetable[x1]
+        interp_weights = indices - x0
+        samples = y0 + interp_weights * (y1 - y0) / (x1 - x0)
+        self.fase = (self.fase + CHUNK * self.step) % self.rate
+        return np.float32(self.volume * samples)
+       
 
 def motion(event):
-    global waveTable,stream,vol,frec, WIDTH, HEIGHT
-    newFrec = event.x / WIDTH * (1000 - 100) + 100
-    newVol = event.y / HEIGHT
+    global waveTable,stream,vol,frec
+    newFrec = event.x / 600 * (1000 - 100) + 100
+    newVol = event.y / 600
     if (newFrec != frec):
-        waveTable.setFrec( newFrec)
+        waveTable.setFrequency( newFrec)
         frec = newFrec
     if (newVol != vol):
         waveTable.setVol( newVol)
         vol = newVol
-    samples = waveTable.getChunk()
+    samples = waveTable.next()
     stream.write(np.float32(0.5 * samples))
     
 
@@ -81,7 +75,7 @@ def main():
     root.mainloop()
     stream = sd.OutputStream(samplerate=SRATE,blocksize=CHUNK,channels=1)  
     stream.start()
-    print('{}, {}'.format(x, y))
+
     
 main()
 
