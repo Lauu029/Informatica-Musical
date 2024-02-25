@@ -2,9 +2,9 @@
 #Laura Gómez Bodego
 
 #%%
-import sys
-print (sys.path)
+
 from tkinter import *
+from tkinter import ttk
 import os
 import sounddevice as sd
 from consts import *
@@ -69,8 +69,17 @@ class OscFM:
             out = self.amp * (2 / np.pi) * np.arctan(1 / np.tan(np.pi * self.fc * sample / SRATE+mod))
         self.frame += CHUNK
         return out 
-    
+carrier='sin'
+module='sin'    
 def test():
+    global module,carrier
+    root = Tk()
+    root.geometry("600x600")  # Establecer el tamaño de la ventana
+    ##root.bind('<Motion>', motion)
+
+    frm = ttk.Frame(root, padding=10)
+    frm.grid()
+  
     end = False # será true cuando el chunk esté incompleto o se pare la reproducción
 
     ##osc.setcarrieOnda('sierra')
@@ -80,8 +89,27 @@ def test():
         blocksize = CHUNK, # tamaño del bloque
         channels = 1) # num de canales
     stream.start() # arrancamos stream
+    def handle_selection(event):
+        global module,carrier
+        print("Selección:", combo1.get(), combo2.get())
+        carrier= combo1.get()
+        module=combo2.get()
+    label1 = ttk.Label(frm, text="Carrier:")
+    label1.grid(row=0, column=0, padx=5, pady=5)
+    # Primer Combobox
+    combo1 = ttk.Combobox(frm, values=["sin", "square", "triangle","sawtooth"])
+    combo1.grid(row=1, column=0, padx=5, pady=5)
+    combo1.bind("<<ComboboxSelected>>", handle_selection)
+
+    label2 = ttk.Label(frm, text="Module:")
+    label2.grid(row=2, column=0, padx=5, pady=5)
+    # Segundo Combobox
+    combo2 = ttk.Combobox(frm, values=["sin", "square", "triangle","sawtooth"])
+    combo2.grid(row=3, column=0, padx=5, pady=5)
+    combo2.bind("<<ComboboxSelected>>", handle_selection)
+    root.mainloop()
 # concatenamos 3 chunks y dibujamos
-    o = OscFM(fc=20,fm=1000,beta=0.1)
+    o = OscFM(carrieOnda=carrier,moduleOnda=module,fc=20,fm=1000,beta=0.1)
 
 # concatenamos 3 chunks y dibujamos
     sgn = np.zeros(0)
