@@ -1,4 +1,4 @@
-<REAPER_PROJECT 0.1 "7.11/win64" 1710630332
+<REAPER_PROJECT 0.1 "7.11/win64" 1710607134
   <NOTES 0 2
   >
   RIPPLE 0
@@ -16,7 +16,7 @@
   TIMEMODE 1 5 -1 30 0 0 -1
   VIDEO_CONFIG 0 0 256
   PANMODE 3
-  CURSOR 0
+  CURSOR 0.75
   ZOOM 12.28614595997069 0 0
   VZOOMEX 6 0
   USE_REC_CFG 0
@@ -60,8 +60,8 @@
   GLOBAL_AUTO -1
   TEMPO 100 4 4
   PLAYRATE 1 0 0.25 4
-  SELECTION 0 0
-  SELECTION2 0 0
+  SELECTION 0 30
+  SELECTION2 0 30
   MASTERAUTOMODE 0
   MASTERTRACKHEIGHT 0 0
   MASTERPEAKCOL 16576
@@ -101,14 +101,14 @@
     PEAKCOL 16576
     BEAT -1
     AUTOMODE 0
-    VOLPAN 0.52901304635576 0 -1 -1 1
-    MUTESOLO 0 2 0
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
     IPHASE 0
     PLAYOFFS 0 1
     ISBUS 0 0
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
-    SEL 1
+    SEL 0
     REC 0 5088 1 0 0 0 0 0
     VU 2
     TRACKHEIGHT 0 0 0 0 0 0 0
@@ -161,7 +161,7 @@
       <VST "VST: ReaDelay (Cockos)" readelay.dll 0 "" 1919247468<5653547265646C72656164656C617900> ""
         bGRlcu5e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAATAAAAAEAAAAAABAA
         AAAAAAAAAAABAAAALAAAAAIAAAAAAAAAKYduPgAAgD8AAAAAAACAPwAAAAC385I6gLqKOgAAgD8AAAAAAACAPwAAgD8AAIA/AAAAPw==
-        AFByb2dyYW0gMQAQAAAA
+        AAAQAAAA
       >
       FLOATPOS 0 0 0 0
       FXID {974123F3-7B85-4906-AA2F-8FA284B501C5}
@@ -172,7 +172,7 @@
         IQAAAAUAAAAAAAAAAQAAAPs2PvC988RAWnad9WKwAkC8dJMYBFbWPwEIAAAAAQAAAAAAAAAAwHJAAAAAAAAA8D8AAAAAAAAAQAEIAAAAAQAAAAAAAAAAQI9AAAAAAAAA
         8D8AAAAAAAAAQAEBAAAAAQAAAAAAAAAAiLNAAAAAAAAA8D+amZmZmZnpPwEEAAAAAAAAAAAAAAAAAFlAAAAAAAAA8D8AAAAAAAAAQAEBAAAAAQAAAAAAAAAAAPA/AAAA
         AP0BAABcAQAAAgAAAA==
-        AFByb2dyYW0gMQAQAAAA
+        AAAQAAAA
       >
       FLOATPOS 0 0 0 0
       FXID {38DA4369-F08E-4CE9-8448-A19A9945337D}
@@ -181,7 +181,7 @@
       <VST "VST: ReaVerbate (Cockos)" reaverbate.dll 0 "" 1920361016<56535472766238726561766572626174> ""
         OGJ2cu9e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAKAAAAAAAAAAAABAA
         776t3g3wrd5DAgA/AACAPzun2T63JuU+AACAPwAAAAAAAIA/AAAAAA==
-        AFByb2dyYW0gMQAQAAAA
+        AAAQAAAA
       >
       FLOATPOS 0 0 0 0
       FXID {FC660517-3139-440D-A692-CC5AAA1B322D}
@@ -358,7 +358,7 @@
     BEAT -1
     AUTOMODE 0
     VOLPAN 1 0 -1 -1 1
-    MUTESOLO 0 2 0
+    MUTESOLO 0 0 0
     IPHASE 0
     PLAYOFFS 0 1
     ISBUS 0 0
@@ -506,7 +506,7 @@
     BEAT -1
     AUTOMODE 0
     PANLAWFLAGS 3
-    VOLPAN 0.55760551322897 0 -1 -1 1
+    VOLPAN 1 0 -1 -1 1
     MUTESOLO 0 2 0
     IPHASE 0
     PLAYOFFS 0 1
@@ -514,7 +514,7 @@
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
     FIXEDLANES 9 0 0
-    SEL 0
+    SEL 1
     REC 0 5056 1 0 0 0 0 0
     VU 2
     TRACKHEIGHT 0 0 0 0 0 0 0
@@ -533,10 +533,7 @@
       ARM 0
       DEFSHAPE 0 -1 -1
       VOLTYPE 1
-      PT 0 0.92789749 0 0 1
-      PT 0.000001 0.92789749 0 0 1
-      PT 4.799999 0.92789749 0 0 1
-      PT 4.8005 1 0
+      PT 0 1 0
       PT 14.3994 1 0
       PT 14.4000012 1 0
     >
@@ -565,129 +562,33 @@
       FADEIN 1 0 0 1 0 0 0
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
-      SEL 0
-      IGUID {3A479514-64CC-4A35-8D4F-D0CF36FEA69A}
+      SEL 1
+      IGUID {6D9FA555-4C69-4F95-8B81-18831E124FD3}
       IID 1
       NAME "Ejerc1 Curso20-21 - comienzoNavidad.mid"
       VOLPAN 1 0 1 -1
       SOFFS 0 0
       PLAYRATE 1 1 0 -1 0 0.0025
       CHANMODE 0
-      GUID {09793958-D30D-4F78-8FA3-D2A0E19F4852}
+      GUID {8462800B-29F7-4AE0-967C-A13976196EFE}
       <SOURCE MIDI
         HASDATA 1 960 QN
         CCINTERP 32
-        POOLEDEVTS {315F85F1-F965-481F-8AE3-0BABB0A4F357}
+        POOLEDEVTS {D8813D0D-084F-469A-886A-C847A8B1E38D}
         <X 0 0 0 0 3 "Ejerc1 Curso20-21"
           /wNFamVyYzEgQ3Vyc28yMC0yMQ==
         >
         <X 0 0 0 0 3 Piano
           /wNQaWFubw==
         >
-        E 0 90 3c 4b
-        E 0 90 40 4b
-        E 0 90 43 55
-        E 1920 80 3c 00
-        E 0 80 40 00
-        E 0 80 43 00
-        E 0 90 3c 4b
-        E 0 90 40 4b
-        E 0 90 43 55
-        E 1920 80 3c 00
-        E 0 80 40 00
-        E 0 80 43 00
-        E 0 90 3c 54
-        E 0 90 47 54
-        E 0 90 43 50
-        E 1920 80 3c 00
-        E 0 80 47 00
-        E 0 80 43 00
-        E 0 90 3c 4b
-        E 0 90 40 4b
-        E 0 90 43 55
-        E 1920 80 3c 00
-        E 0 80 40 00
-        E 0 80 43 00
-        E 0 90 41 4b
-        E 0 90 45 4b
-        E 0 90 3c 4b
-        E 1920 80 41 00
-        E 0 80 45 00
-        E 0 80 3c 00
-        E 0 90 3c 4b
-        E 0 90 40 4b
-        E 0 90 43 55
-        E 1920 80 3c 00
-        E 0 80 40 00
-        E 0 80 43 00
-        E 0 90 3c 54
-        E 0 90 47 54
-        E 0 90 43 50
-        E 2400 80 3c 00
-        E 0 80 47 00
-        E 0 80 43 00
-        E 0 90 3c 55
-        E 0 90 40 55
-        E 0 90 43 55
-        E 960 80 3c 00
-        E 0 80 40 00
-        E 0 80 43 00
-        E 0 90 3c 4b
-        E 0 90 40 4b
-        E 0 90 43 55
-        E 1920 80 3c 00
-        E 0 80 40 00
-        E 0 80 43 00
-        E 0 90 3c 4b
-        E 0 90 40 4b
-        E 0 90 43 55
-        E 1920 80 3c 00
-        E 0 80 40 00
-        E 0 80 43 00
-        E 0 90 3c 51
-        E 0 90 47 51
-        E 0 90 43 4d
-        E 1920 80 3c 00
-        E 0 80 47 00
-        E 0 80 43 00
-        E 0 90 3c 4b
-        E 0 90 40 4b
-        E 0 90 43 55
-        E 1920 80 3c 00
-        E 0 80 40 00
-        E 0 80 43 00
-        E 0 90 41 4b
-        E 0 90 45 4b
-        E 0 90 3c 4b
-        E 1920 80 41 00
-        E 0 80 45 00
-        E 0 80 3c 00
-        E 0 90 47 51
-        E 0 90 43 4d
-        E 0 90 3c 51
-        E 1920 80 47 00
-        E 0 80 43 00
-        E 0 80 3c 00
-        E 0 90 41 4b
-        E 0 90 45 4b
-        E 0 90 3c 4b
-        E 1440 80 41 00
-        E 0 80 45 00
-        E 0 80 3c 00
-        E 0 90 3c 4b
-        E 0 90 40 4b
-        E 0 90 43 55
-        E 1920 80 3c 00
-        E 0 80 40 00
-        E 0 80 43 00
-        E 960 b0 7b 00
+        E 30720 b0 7b 00
         CCINTERP 32
         CHASE_CC_TAKEOFFS 1
         GUID {0DA0ABB7-719F-45FA-A779-0C23C93F3DC6}
         IGNTEMPO 0 120 4 4
         SRCCOLOR 3
         VELLANE -1 100 0 0 1
-        CFGEDITVIEW -1067.14388 0.036977 26 12 0 -1 0 0 0 0.5
+        CFGEDITVIEW 0 0.027585 48 12 0 -1 0 0 0 0.5
         KEYSNAP 1
         TRACKSEL 0
         EVTFILTER 0 -1 -1 -1 -1 0 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
