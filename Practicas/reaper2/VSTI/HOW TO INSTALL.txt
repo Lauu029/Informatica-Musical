@@ -1,0 +1,3 @@
+Installation instructions (multi language):
+
+https://www.powerdrumkit.com/help-page.php?topic=install_windows_vst2&os=Win&langselect=1
