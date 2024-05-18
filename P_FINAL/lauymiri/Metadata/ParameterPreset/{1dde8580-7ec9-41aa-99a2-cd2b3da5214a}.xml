@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{1dde8580-7ec9-41aa-99a2-cd2b3da5214a}">
+		<property name="name">
+			<value>EqInmerse</value>
+		</property>
+		<relationship name="folder">
+			<destination>{5cbe8665-2f47-4c86-8440-f326d9e209a1}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{3bf56dda-0e31-4519-901c-bb16f9d17feb}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{3bf56dda-0e31-4519-901c-bb16f9d17feb}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
