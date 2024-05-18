@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{0c2472d0-f674-4d51-90d6-81dfba7e8e66}">
+		<property name="assetPath">
+			<value>miri/gameOver.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.0800000000000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{1a94e470-3414-40d4-9c33-e0cbe4076fd1}</destination>
+		</relationship>
+	</object>
+</objects>
