@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{3cba212f-792f-48e0-b932-f8331bc9a668}">
+		<property name="assetPath">
+			<value>miri/onlySaxomid2.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>4.3102040816326532</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{1a94e470-3414-40d4-9c33-e0cbe4076fd1}</destination>
+		</relationship>
+	</object>
+</objects>

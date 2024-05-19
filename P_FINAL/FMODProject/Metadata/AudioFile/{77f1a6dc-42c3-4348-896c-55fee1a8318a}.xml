@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{77f1a6dc-42c3-4348-896c-55fee1a8318a}">
+		<property name="assetPath">
+			<value>Laura/Bajo2.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>12.743356009070295</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{1a94e470-3414-40d4-9c33-e0cbe4076fd1}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{f0e65d0a-eac7-4f48-92be-0540ffcfac94}">
+		<property name="assetPath">
+			<value>old-radio-noise-46734.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>9.7175510204081625</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{1a94e470-3414-40d4-9c33-e0cbe4076fd1}</destination>
+		</relationship>
+	</object>
+</objects>
